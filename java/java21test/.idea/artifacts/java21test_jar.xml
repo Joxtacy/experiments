@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="java21test:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/java21test_jar</output-path>
+    <root id="archive" name="java21test.jar">
+      <element id="module-output" name="java21test" />
+    </root>
+  </artifact>
+</component>
