@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>HTMX with Java</title>
+    <script src="https://unpkg.com/htmx.org@1.9.12"></script>
+</head>
+<body>
+<h1>HTMX with Java</h1>
+<button hx-get="/fragment" hx-target="#content">Load Fragment</button>
+<div id="content">
+    <!-- Content will be loaded here -->
+</div>
+<div th:fragment="copy">
+    &copy; 2024 The Good Thymes Virtual Grocery
+</div>
+</body>
+</html>
