@@ -3,6 +3,7 @@
 <head>
     <title>Counter</title>
     <script src="https://unpkg.com/htmx.org@1.9.12"></script>
+    <script src="https://unpkg.com/hyperscript.org@0.9.12"></script>
     <style>
         body {
             margin: 0;
@@ -27,12 +28,18 @@
         }
     </style>
 </head>
-<body>
+<body _="on keyup[key is 'ArrowUp'] trigger click on #increment
+         on keyup[code is 'Space'] trigger click on #increment
+         on keyup[key is 'ArrowDown'] trigger click on #decrement
+         on keyup[code is 'Backspace'] trigger click on #decrement
+         on keypress[code is 'KeyR'] trigger click on #reset">
 <div class="counter">
-    <button class="decrease" hx-post="/counter/decrement" hx-swap="outerHTML" hx-target="#counter">👇</button>
+    <button id="decrement" class="decrease" hx-post="/counter/decrement" hx-swap="outerHTML" hx-target="#counter">👇
+    </button>
     <span id="counter" th:text="${counter}"></span>
-    <button class="increase" hx-post="/counter/increment" hx-swap="outerHTML" hx-target="#counter">👆</button>
-    <button class="reset" hx-post="/counter/reset" hx-swap="outerHTML" hx-target="#counter">🫰</button>
+    <button id="increment" class="increase" hx-post="/counter/increment" hx-swap="outerHTML" hx-target="#counter">👆
+    </button>
+    <button id="reset" class="reset" hx-post="/counter/reset" hx-swap="outerHTML" hx-target="#counter">🫰</button>
 </div>
 </body>
 </html>
