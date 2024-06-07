@@ -1,45 +1,48 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
+
 <head>
-    <title>Counter</title>
-    <script src="https://unpkg.com/htmx.org@1.9.12"></script>
-    <script src="https://unpkg.com/hyperscript.org@0.9.12"></script>
-    <style>
-        body {
-            margin: 0;
-        }
+	<title>Counter</title>
+	<script src="https://unpkg.com/htmx.org@1.9.12"></script>
+	<script src="https://unpkg.com/hyperscript.org@0.9.12"></script>
+	<style>
+		body {
+			margin: 0;
+		}
 
-        .counter {
-            font-size: 10vh;
-            font-family: monospace;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-        }
+		.counter {
+			font-size: 10vh;
+			font-family: monospace;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			height: 100vh;
+		}
 
-        span {
-            min-width: 3ch;
-            text-align: center;
-        }
+		span {
+			min-width: 3ch;
+			text-align: center;
+		}
 
-        button {
-            font-size: 10vh;
-        }
-    </style>
+		button {
+			font-size: 10vh;
+		}
+	</style>
 </head>
+
 <body _="on keyup[key is 'ArrowUp'] trigger click on #increment
          on keyup[code is 'Space'] trigger click on #increment
          on keyup[key is 'ArrowDown'] trigger click on #decrement
          on keyup[code is 'Backspace'] trigger click on #decrement
          on keypress[code is 'KeyR'] trigger click on #reset">
-<div class="counter">
-    <button id="decrement" class="decrease" hx-post="/counter/decrement" hx-swap="outerHTML" hx-target="#counter">👇
-    </button>
-    <span id="counter" th:text="${counter}"></span>
-    <button id="increment" class="increase" hx-post="/counter/increment" hx-swap="outerHTML" hx-target="#counter">👆
-    </button>
-    <button id="reset" class="reset" hx-post="/counter/reset" hx-swap="outerHTML" hx-target="#counter">🫰</button>
-</div>
+	<div class="counter">
+		<button id="decrement" class="decrease" hx-post="/counter/decrement" hx-swap="outerHTML" hx-target="#counter">👇
+		</button>
+		<span id="counter" th:text="${counter}"></span>
+		<button id="increment" class="increase" hx-post="/counter/increment" hx-swap="outerHTML" hx-target="#counter">👆
+		</button>
+		<button id="reset" class="reset" hx-post="/counter/reset" hx-swap="outerHTML" hx-target="#counter">🫰</button>
+	</div>
 </body>
+
 </html>
