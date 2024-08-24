@@ -1,0 +1,13 @@
+resources:
+  projectroot: /Users/joxtacy/PrivateProjects/experiments/maven/htmx-demo # a variable. root of the project
+server:
+  port: 9090
+spring:
+  profiles:
+    active: dev # sets the default profile
+  thymeleaf:
+    cache: false # this tells spring to not cache the templates
+    prefix: file:///${resources.projectroot}/src/main/resources/templates/ # this tells spring to get the templates from the project root as files and not from the classpath/built templates
+  cache:
+    type: NONE
+
