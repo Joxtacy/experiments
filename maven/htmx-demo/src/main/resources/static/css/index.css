@@ -1,0 +1,10 @@
+:root {
+	color-scheme: light dark;
+	--fg: #222;
+	--bg: #eee;
+}
+
+body {
+	color: light-dark(var(--fg), var(--bg));
+	background-color: light-dark(var(--bg), var(--fg));
+}
