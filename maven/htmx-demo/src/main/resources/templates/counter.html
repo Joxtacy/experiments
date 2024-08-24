@@ -35,7 +35,7 @@
          on keyup[code is 'Space'] trigger click on #increment
          on keyup[key is 'ArrowDown'] trigger click on #decrement
          on keyup[code is 'Backspace'] trigger click on #decrement
-         on keypress[code is 'KeyR'] trigger click on #reset">
+         on keyup[code is 'KeyR'] trigger click on #reset">
 	<div class="counter">
 		<button id="decrement" class="decrease" hx-post="/counter/decrement" hx-swap="outerHTML" hx-target="#counter">👇
 		</button>
