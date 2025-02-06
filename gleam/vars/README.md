@@ -4,7 +4,7 @@
 [![Hex Docs](https://img.shields.io/badge/hex-docs-ffaff3)](https://hexdocs.pm/vars/)
 
 ```sh
-gleam add vars
+gleam add vars@1
 ```
 ```gleam
 import vars
@@ -21,5 +21,4 @@ Further documentation can be found at <https://hexdocs.pm/vars>.
 ```sh
 gleam run   # Run the project
 gleam test  # Run the tests
-gleam shell # Run an Erlang shell
 ```
