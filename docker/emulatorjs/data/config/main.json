@@ -1,0 +1,27 @@
+{
+  "title": "EmulatorJS",
+  "root": "main",
+  "parent": "main",
+  "display_items": 2,
+  "defaults": {
+    "emulator": "",
+    "bios": "",
+    "path": "main",
+    "rom_extension": "",
+    "video_position": "",
+    "type": "menu",
+    "has_back": true,
+    "has_corner": true,
+    "has_logo": true,
+    "has_video": true,
+    "multi_disc": 0
+  },
+  "items": {
+    "gba": {
+      "video_position": "left:13.5vw;top:36vh;width:31.7vw;height:38.3vh;"
+    },
+    "gbc": {
+      "video_position": "left:15.5vw;top:31.2vh;width:28vw;height:44.7vh;"
+    }
+  }
+}

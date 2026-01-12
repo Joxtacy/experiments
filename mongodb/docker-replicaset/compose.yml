@@ -1,0 +1,92 @@
+version: '3'
+services:
+  mongo1:
+    image: mongo:4.4
+    command: --replSet rs0
+    # container_name: mongo1
+    ports:
+      - '27017:27017'
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongo localhost:27017/admin --quiet
+      interval: 2s
+      timeout: 3s
+      retries: 5
+
+  mongo2:
+    image: mongo:4.4
+    command: --replSet rs0
+    # container_name: mongo2
+    ports:
+      - '27018:27017'
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongo localhost:27017/admin --quiet
+      interval: 2s
+      timeout: 3s
+      retries: 5
+
+  mongo3:
+    image: mongo:4.4
+    command: --replSet rs0
+    # container_name: mongo3
+    ports:
+      - '27019:27017'
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongo localhost:27017/admin --quiet
+      interval: 2s
+      timeout: 3s
+      retries: 5
+
+  mongo-init:
+    image: mongo:4.4
+    restart: "no"
+    depends_on:
+      mongo1:
+        condition: service_healthy
+      mongo2:
+        condition: service_healthy
+      mongo3:
+        condition: service_healthy
+    command: >
+      mongo --host mongo1:27017 --eval
+      '
+      rs.initiate( {
+        _id : "rs0",
+        members: [
+          { _id: 0, host: "mongo1:27017" },
+          { _id: 1, host: "mongo2:27017" },
+          { _id: 2, host: "mongo3:27017" }
+        ]
+      })
+      '
+# services:
+#   mongo1:
+#     image: mongo:latest
+#     container_name: mongo1
+#     ports:
+#       - 27017:27017
+#     volumes:
+#       - ./data/mongo1:/data
+#     command: mongod --replSet rs0
+# 
+#   mongo2:
+#     image: mongo:latest
+#     container_name: mongo2
+#     ports:
+#       - 27018:27017
+#     volumes:
+#       - ./data/mongo2:/data
+#     command: mongod --replSet rs0
+# 
+#   mongo3:
+#     image: mongo:latest
+#     container_name: mongo3
+#     ports:
+#       - 27019:27017
+#     volumes:
+#       - ./data/mongo3:/data
+#     command: mongod --replSet rs0
+# 
+# networks:
+#   default:
+#     name: bridge
+#     external: true

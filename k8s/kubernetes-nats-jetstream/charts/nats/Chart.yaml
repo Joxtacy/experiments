@@ -1,0 +1,16 @@
+name: nats
+version: 0.1.0
+description: A Helm chart for NATS JetStream
+keywords:
+  - nats
+  - jetstream
+  - messaging
+  - queue
+maintainers:
+  - name: Your Name
+    email: your.email@example.com
+sources:
+  - https://nats.io
+home: https://nats.io
+icon: https://nats.io/favicon.ico
+dependencies: []

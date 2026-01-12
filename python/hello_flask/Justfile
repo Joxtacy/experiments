@@ -1,0 +1,13 @@
+alias s := start
+
+# list available commands
+@default:
+	just --list
+
+# start the app in dev mode
+@dev:
+	FLASK_APP=hello_app/webapp.py flask run --reload
+
+# start the app
+@start:
+	FLASK_APP=hello_app/webapp.py flask run

@@ -1,0 +1,12 @@
+# Ignore all hidden files
+.*
+# Ignore the Helm chart lock file
+Chart.lock
+# Ignore the build directory
+build/
+# Ignore the temporary files
+tmp/
+# Ignore the test files
+tests/
+# Ignore the markdown files
+*.md

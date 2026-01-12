@@ -1,0 +1,10 @@
+---
+- name: Update wafs
+  hosts: wafs
+  remote_user: root
+
+  tasks:
+    - name: Write the nginx config file
+      ansible.builtin.template:
+        src: /srv/httpd.j2
+        dest: /etc/httpd.conf

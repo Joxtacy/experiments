@@ -1,0 +1,14 @@
+{
+	"name": "subscriber",
+	"module": "index.ts",
+	"devDependencies": {
+		"@types/bun": "latest"
+	},
+	"peerDependencies": {
+		"typescript": "^5.0.0"
+	},
+	"type": "module",
+	"dependencies": {
+		"@nats-io/transport-node": "^3.0.0-35"
+	}
+}

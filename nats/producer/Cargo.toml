@@ -1,0 +1,10 @@
+[package]
+name = "producer"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+async-nats = "0.38.0"
+bytes = "1.10.0"
+futures = "0.3.31"
+tokio = { version = "1.43.0", features = ["full"] }

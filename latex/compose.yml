@@ -1,0 +1,16 @@
+services:
+  # Can then be run with `docker compose run --rm latex arara -v essay.tex`
+  latex:
+    image: registry.gitlab.com/islandoftex/images/texlive:latest
+    working_dir: /usr/src/app
+    volumes:
+      - $PWD:/usr/src/app
+    command: ["arara", "-v", "essay.tex"]
+    # develop:
+    # watch:
+    # sync content then run command to reload service without interruption
+    # - path: ./etc/config
+    # action: sync+exec # needs docker compose version 2.32.0 or later
+    # target: /etc/config/
+    # exec:
+    # command: app reload

@@ -1,0 +1,17 @@
+---
+- name: Test Ansible Docker Playbook
+  hosts: localhost
+  tasks:
+    - name: Print a welcome message
+      debug:
+        msg: "Hello from Ansible running in Docker!"
+
+    - name: Create a test file
+      file:
+        path: /ansible/ansible_test_file.txt
+        state: touch
+
+    - name: Write text to the test file
+      copy:
+        content: "This file was created by Ansible running in Docker. Again! :D 🥳"
+        dest: /ansible/ansible_test_file.txt

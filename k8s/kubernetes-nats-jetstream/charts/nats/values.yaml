@@ -1,0 +1,48 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nats-config
+data:
+  nats-server.conf: |
+    jetstream {
+      store_dir: "/data/jetstream"
+      max_mem_store: 1Gb
+      max_file_store: 10Gb
+    }
+    http_port: 8222
+    port: 4222
+    cluster {
+      name: "nats-cluster"
+      listen: 0.0.0.0:6222
+      routes = [
+        nats-route://route-1:6222
+      ]
+    }
+    authorization {
+      users = [
+        {user: "user", password: "password"}
+      ]
+    }
+
+replicaCount: 1
+
+image:
+  repository: nats
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  enabled: true
+  annotations: {}
+  type: ClusterIP
+  port: 4222
+  targetPort: 4222
+  name: nats
+
+resources: {}
+  
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}

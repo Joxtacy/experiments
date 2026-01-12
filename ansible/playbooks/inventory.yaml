@@ -1,0 +1,20 @@
+---
+wafs:
+  hosts:
+    waf01:
+      ansible_host: 192.168.50.42
+      ansible_user: joxtacy
+    waf02:
+      ansible_host: 192.168.50.148
+      ansible_user: joxtacy
+
+webservers:
+  hosts:
+    web01:
+      ansible_host: 192.168.50.69
+      ansible_user: joxtacy
+
+home:
+  children:
+    wafs:
+    webservers:

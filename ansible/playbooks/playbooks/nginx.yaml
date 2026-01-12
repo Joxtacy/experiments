@@ -1,0 +1,13 @@
+---
+- name: set up webserver
+  hosts: wafs
+  tasks:
+    - name: ensure nginx is at the latest version
+      apt:
+        name: nginx
+        state: latest
+    - name: start nginx
+      ansible.builtin.service:
+        name: nginx
+        state: started
+        enabled: yes # if you want to also enable nginx

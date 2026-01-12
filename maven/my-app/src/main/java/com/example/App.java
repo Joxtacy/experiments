@@ -5,7 +5,9 @@ package com.example;
  */
 public class App {
 	public void main() {
-		System.out.println("Hello World!");
+		String s = "Hello World!";
+		String q = STR."Hi, \{s}";
+		System.out.println(q);
 	}
 
 	double cube(int a) {

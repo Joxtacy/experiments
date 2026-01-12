@@ -27,8 +27,8 @@ public class HelloWorld {
 		// I do not understand this one
 		/*
 		 * module com.example.module {
-		 *   requires java.base;
-		 *   exports com.example.package;
+		 * requires java.base;
+		 * exports com.example.package;
 		 * }
 		 */
 
@@ -81,17 +81,18 @@ public class HelloWorld {
 
 		// HTTP Client API
 		// Standardized HTTP Client for HTTP/2 and WebSocket
-        /*
-        try (HttpClient client = HttpClient.newHttpClient()) {
-            HttpRequest request = HttpRequest.newBuilder()
-                    .uri(URI.create("https://example.com"))
-                    .build();
-            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-            // System.out.println(response.body());
-        } catch (Exception e) {
-            // noop
-        }
-         */
+		/*
+		 * try (HttpClient client = HttpClient.newHttpClient()) {
+		 * HttpRequest request = HttpRequest.newBuilder()
+		 * .uri(URI.create("https://example.com"))
+		 * .build();
+		 * HttpResponse<String> response = client.send(request,
+		 * HttpResponse.BodyHandlers.ofString());
+		 * // System.out.println(response.body());
+		 * } catch (Exception e) {
+		 * // noop
+		 * }
+		 */
 
 		/* Java 12 (March 2019) */
 
@@ -102,22 +103,24 @@ public class HelloWorld {
 			case 2 -> "two";
 			default -> "many";
 		};
+		System.out.println(STR."Switch result: \{result}");
 
 		// Compact Number Formatting
 		// Format numbers in a human-readable way
 		NumberFormat compactNumberFormat = NumberFormat.getCompactNumberInstance();
 		System.out.println(compactNumberFormat.format(1_000)); // "1K"
 		System.out.println(compactNumberFormat.format(1_230_280)); // "1M"
-		NumberFormat japaneseNumberFormat = NumberFormat.getCompactNumberInstance(Locale.JAPANESE, NumberFormat.Style.SHORT);
+		NumberFormat japaneseNumberFormat = NumberFormat.getCompactNumberInstance(Locale.JAPANESE,
+				NumberFormat.Style.SHORT);
 		System.out.println(japaneseNumberFormat.format(1_234_567)); // 123万
 
 		/* Java 13 (September 2019) */
 
 		// Text Blocks (Preview)
 		String textBlock = """
-						This is a text block.
-						It can span multiple lines.
-						""";
+				This is a text block.
+				It can span multiple lines.
+				""";
 		System.out.println(textBlock);
 
 		/* Java 14 (March 2020) */
@@ -139,12 +142,12 @@ public class HelloWorld {
 
 		// Text Blocks (Standard)
 		String html = """
-						<html>
-						    <body>
-						        <p>Hello, World</p>
-						    </body>
-						</html>
-						""";
+				<html>
+				    <body>
+				        <p>Hello, World</p>
+				    </body>
+				</html>
+				""";
 
 		// Pattern Matching for instanceof (Preview)
 		Object obj = "Henlo";
@@ -173,11 +176,12 @@ public class HelloWorld {
 
 		// Simple Web Server
 		// Provides a simple, minimal web server for prototyping
-        /*
-        var server = SimpleFileServer.createFileServer(
-                new InetSocketAddress(8000), Path.of("/var/www"), SimpleFileServer.OutputLevel.VERBOSE);
-        server.start();
-         */
+		/*
+		 * var server = SimpleFileServer.createFileServer(
+		 * new InetSocketAddress(8000), Path.of("/var/www"),
+		 * SimpleFileServer.OutputLevel.VERBOSE);
+		 * server.start();
+		 */
 
 		// UTF-8 by Default
 		// Default character set is not UTF-8
@@ -224,7 +228,7 @@ public class HelloWorld {
 		// Simplifies embedding expressions inside strings
 		String name = "Wurl";
 		String template = STR."Hello, \{name.toUpperCase()}!"; // preview
-		System.out.println(template);
+				System.out.println(template);
 
 		// Sequenced Collections
 		// Introduces new collection interfaces
@@ -248,7 +252,8 @@ public class HelloWorld {
 		/* Java 22 (March 2024) */
 
 		// Unnamed Variables & Patterns
-		// Lets you declare a variable as `_` if you're not using it, like in a for loop, lambda expression, or a try-catch.
+		// Lets you declare a variable as `_` if you're not using it, like in a for
+		// loop, lambda expression, or a try-catch.
 		var s = "sixty nine";
 		try {
 			int i = Integer.parseInt(s);
@@ -259,16 +264,16 @@ public class HelloWorld {
 		// String Templates (Second Preview)
 		String a = "MIRP";
 		String t = STR."Merp, \{a.toLowerCase()}!"; // preview
-		System.out.println(t);
+				System.out.println(t);
 
 		// Statements Before super(...) or this(...) (Preview)
 		BeforeSuper bs = new BeforeSuper("Hello before super");
 
 		// Stream Gatherers (Preview)
 		var l = Stream.iterate(0, i -> i + 1)
-						.gather(Gatherers.windowFixed(3))
-						.limit(2)
-						.collect(Collectors.toList());
+				.gather(Gatherers.windowFixed(3))
+				.limit(2)
+				.collect(Collectors.toList());
 		System.out.println(l);
 	}
 
@@ -333,7 +338,8 @@ public class HelloWorld {
 	public class BeforeSuper extends Before {
 		public BeforeSuper(String a) {
 			System.out.println("BeforeSuper: " + a);
-			if (a.equals("ded")) throw new IllegalArgumentException("Can't have a name like that");
+			if (a.equals("ded"))
+				throw new IllegalArgumentException("Can't have a name like that");
 			super(a);
 		}
 	}

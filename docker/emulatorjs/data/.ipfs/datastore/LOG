@@ -1,0 +1,44 @@
+=============== Nov 11, 2024 (UTC) ===============
+18:38:52.195624 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+18:38:52.197905 db@open opening
+18:38:52.198305 version@stat F·[] S·0B[] Sc·[]
+18:38:52.198684 db@janitor F·2 G·0
+18:38:52.198710 db@open done T·784.421µs
+18:38:52.207317 db@close closing
+18:38:52.207384 db@close done T·65.792µs
+=============== Nov 11, 2024 (UTC) ===============
+18:38:52.258894 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+18:38:52.260066 version@stat F·[] S·0B[] Sc·[]
+18:38:52.261174 db@open opening
+18:38:52.261315 journal@recovery F·1
+18:38:52.261536 journal@recovery recovering @1
+18:38:52.262668 memdb@flush created L0@2 N·6 S·1KiB "/F5..WLI,v6":"/pi..rty,v1"
+18:38:52.263109 version@stat F·[1] S·1KiB[1KiB] Sc·[0.25]
+18:38:52.266841 db@janitor F·3 G·0
+18:38:52.266874 db@open done T·5.677907ms
+19:13:07.404202 db@close closing
+19:13:07.404365 db@close done T·143.542µs
+=============== Nov 12, 2024 (UTC) ===============
+07:57:56.122406 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+07:57:56.123423 version@stat F·[1] S·1KiB[1KiB] Sc·[0.25]
+07:57:56.123455 db@open opening
+07:57:56.123529 journal@recovery F·1
+07:57:56.123737 journal@recovery recovering @3
+07:57:56.129533 memdb@flush created L0@5 N·1215 S·87KiB "/F5..WLI,v473":"/pr..VS2,v935"
+07:57:56.129825 version@stat F·[2] S·88KiB[88KiB] Sc·[0.50]
+07:57:56.138868 db@janitor F·4 G·0
+07:57:56.138903 db@open done T·15.433253ms
+08:56:15.333611 db@close closing
+08:56:15.333885 db@close done T·277.876µs
+=============== Nov 12, 2024 (UTC) ===============
+09:23:07.827009 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+09:23:07.827705 version@stat F·[2] S·88KiB[88KiB] Sc·[0.50]
+09:23:07.827731 db@open opening
+09:23:07.827798 journal@recovery F·1
+09:23:07.828635 journal@recovery recovering @6
+09:23:07.833190 memdb@flush created L0@8 N·72 S·14KiB "/F5..WLI,v1287":"/pr..VS2,v1291"
+09:23:07.833689 version@stat F·[3] S·103KiB[103KiB] Sc·[0.75]
+09:23:07.840229 db@janitor F·5 G·0
+09:23:07.840278 db@open done T·12.534665ms
+09:24:32.085367 db@close closing
+09:24:32.085594 db@close done T·215.085µs

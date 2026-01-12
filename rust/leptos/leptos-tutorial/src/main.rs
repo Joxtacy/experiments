@@ -1,32 +1,35 @@
-use leptos::*;
+use leptos::prelude::*;
+mod buttons;
+mod children;
+mod control_flow;
+mod inputs;
+mod lists;
+mod progress_bars;
+mod quirks;
 
 fn main() {
-    console_error_panic_hook::set_once();
-    mount_to_body(|| view! { <App /> })
+    console_error_panic_hook::set_once(); // https://book.leptos.dev/getting_started/leptos_dx.html#1-set-up-console_error_panic_hook
+    leptos::mount::mount_to_body(App)
 }
 
 #[component]
 fn App() -> impl IntoView {
-    let (count, set_count) = create_signal(0);
-    let double_count = move || count() * 2;
+    let (count, set_count) = signal(0);
+    let double_count = move || count.get() * 2;
+
     view! {
         <button
             on:click=move |_| {
-                set_count.update(|n| *n += 1);
+                *set_count.write() += 1;
             }
-            // the class: syntax reactively updates a single class
-            // here, we'll set the `red` class when `count` is odd
-            class:red=move || count() % 2 == 1
-            class=("button-20", move || count() % 2 == 1)
-            // set the `style` attribute
+            class:red=move || count.get() % 2 == 1
+            class=("button-20", move || count.get() % 2 == 1)
+            class=(["button-20", "rounded"], move || count.get() % 2 == 1)
             style="position: absolute"
-            // and toggle individual CSS properties with `style:`
-            style:left=move || format!("{}px", count() * 2 + 100)
-            style:background-color=move || format!("rgb({}, {}, 100)", count(), 100)
+            style:left=move || format!("{}px", count.get() + 100)
+            style:background-color=move || format!("rgb({}, {}, 100)", count.get(), 100)
             style:max-width="400px"
-            style:top="100px"
-            // Set a CSS variable for stylesheet use
-            style=("--columns", count)
+            style=("--columns", move || count.get().to_string())
         >
             "Click me: "
             {count}
@@ -35,29 +38,33 @@ fn App() -> impl IntoView {
             max="50"
             // signals are functions, so `value=count` and `value=move || count.get()`
             // are interchangeable.
-            value=double_count
+            value=count
         />
-        <ProgressBar progress=count />
-        <ProgressBar progress=Signal::derive(double_count) />
-    }
-}
+        <progress max="50" value=double_count />
+        <p>"Double Count: " {double_count}</p>
+        <progress_bars::ProgressBar progress=count />
+        <progress_bars::ProgressBar progress=Signal::derive(double_count) />
 
-/// Shows progress toward a goal
-#[component]
-fn ProgressBar(
-    /// The maximum value of the progress bar
-    #[prop(default = 100)]
-    max: u16,
-    /// How much progress should be displayed
-    #[prop(into)]
-    progress: Signal<i32>,
-) -> impl IntoView {
-    view! {
-        <progress
-            max=max
-            // signals are functions, so `value=count` and `value=move || count.get()`
-            // are interchangeable.
-            value=progress
-        />
+        <h1>"Iteration"</h1>
+        <h2>"Static List"</h2>
+        <p>"Use this pattern if the list itself is static."</p>
+        <lists::StaticList length=5 />
+        <h2>"Dynamic List"</h2>
+        <p>"Use this pattern if the rows in your list will change."</p>
+        <lists::DynamicList initial_length=5 />
+        <inputs::ControlledInput />
+        <inputs::ControlledInputBind />
+        <inputs::UncontrolledInput />
+        <inputs::NumericInput />
+        <quirks::TextAreaQuirks />
+        <quirks::SelectQuirks />
+        <control_flow::ControlFlow />
+        <buttons::Buttons />
+        <children::TakesChildren render_prop=|| {
+            view! { <p>"Hi, there!"</p> }
+        }>
+            // these get passed to `children`
+            "Some text " <span>"A span"</span>
+        </children::TakesChildren>
     }
 }

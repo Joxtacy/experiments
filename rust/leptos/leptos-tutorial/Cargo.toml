@@ -1,8 +1,8 @@
 [package]
 name = "leptos-tutorial"
 version = "0.1.0"
-edition = "2021"
+edition = "2024"
 
 [dependencies]
-console_error_panic_hook = "0.1.7"
-leptos = { version = "0.6.13", features = ["csr", "nightly"] }
+console_error_panic_hook = "0.1.7"                            # https://book.leptos.dev/getting_started/leptos_dx.html#1-set-up-console_error_panic_hook
+leptos = { version = "0.7.8", features = ["csr", "nightly"] }

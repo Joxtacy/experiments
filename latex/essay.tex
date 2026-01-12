@@ -1,0 +1,31 @@
+% arara: pdflatex
+% arara: pdflatex if found('log', 'undefined references')
+\documentclass[
+	english,
+	accentcolor=9c,
+	type=intern,
+	marginpar=false
+	]{tudapub}
+
+\usepackage[english, main=english]{babel}
+\usepackage[babel]{csquotes}
+\usepackage{mathtools}
+
+\begin{document}
+
+
+\title{Build LaTeX locally with Docker}
+\author{Nico Alt}
+%\date{} % Ohne Angabe wird automatisch das heutige Datum eingefügt
+
+\maketitle
+
+\section{Introduction}
+
+To calculate velocity, start like this:
+
+\begin{equation*}
+v = \frac{s}{t}
+\end{equation*}
+
+\end{document}
